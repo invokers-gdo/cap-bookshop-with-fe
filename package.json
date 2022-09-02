@@ -1,0 +1,61 @@
+{
+    "name": "@capire/bookshop",
+    "version": "1.0.0",
+    "description": "A simple self-contained bookshop service.",
+    "files": [
+        "app",
+        "srv",
+        "db",
+        "index.cds",
+        "index.js"
+    ],
+    "dependencies": {
+        "@sap/cds": ">=5.9",
+        "@sap/cds-odata-v2-adapter-proxy": "^1.8.14",
+        "@sap/hana-client": "^2.12.20",
+        "@sap/xssec": "^3.2.13",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "passport": ">=0.4.1"
+    },
+    "devDependencies": {
+        "@sap/ux-specification": "^1.102.5",
+        "sqlite3": "^5.0.2",
+        "rimraf": "^3.0.2"
+    },
+    "scripts": {
+        "genres": "cds serve test/genres.cds",
+        "start": "cds run",
+        "watch": "cds watch",
+        "build:mta": "cds build/all --clean && mbt build -p=cf",
+        "deploy:cf": "npm run build:mta && cf deploy mta_archives/bookshop_${npm_package_version}.mtar -f",
+        "watch-maintain_books": "cds watch --open maintain_books/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy bookshop --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "sql"
+            },
+            "[production]": {
+                "auth": {
+                    "kind": "xsuaa"
+                },
+                "approuter": {
+                    "kind": "cloudfoundry"
+                }
+            }
+        },
+        "hana": {
+            "deploy-format": "hdbtable"
+        },
+        "features": {
+            "fiori_preview": true
+        }
+    },
+    "sapux": [
+        "app/maintain_books"
+    ]
+}

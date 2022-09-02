@@ -1,0 +1,19 @@
+{
+    "requires": {
+        "auth": {
+            "strategy": "mock",
+            "users": {
+                "user": { 
+                    "password": "user", 
+                    "roles": [ ],
+                    "userAttributes": { }
+                },
+                "admin": { 
+                    "password": "admin", 
+                    "roles": [ "admin" ],
+                    "userAttributes": { }
+                }
+            }
+        }
+    }
+}
