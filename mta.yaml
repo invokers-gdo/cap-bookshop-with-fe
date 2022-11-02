@@ -28,6 +28,9 @@ modules:
 - name: bookshop
   type: approuter.nodejs
   path: app/
+  build-parameters:
+    ignore: ["maintain_books/"]
+
   requires:
   - name: srv-api
     group: destinations
