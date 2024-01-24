@@ -10,18 +10,18 @@
         "index.js"
     ],
     "dependencies": {
-        "@sap/cds": ">=5.9",
-        "@sap/cds-odata-v2-adapter-proxy": "^1.8.14",
-        "@sap/hana-client": "^2.12.20",
-        "@sap/xssec": "^3.2.13",
+        "@cap-js-community/odata-v2-adapter": "^1.12.2",
+        "@sap/cds": "^7.5.3",
+        "@sap/hana-client": "^2.19.21",
+        "@sap/xssec": "^3.6.1",
         "cors": "^2.8.5",
-        "express": "^4.17.1",
-        "passport": ">=0.4.1"
+        "express": "^4.18.2",
+        "passport": ">=0.7.0"
     },
     "devDependencies": {
-        "@sap/ux-specification": "^1.102.5",
-        "sqlite3": "^5.0.2",
-        "rimraf": "^3.0.2"
+        "@sap/ux-specification": "^1.120.1",
+        "rimraf": "^5.0.5",
+        "sqlite3": "^5.1.7"
     },
     "scripts": {
         "genres": "cds serve test/genres.cds",
@@ -53,6 +53,9 @@
         },
         "features": {
             "fiori_preview": true
+        },
+        "cov2ap" : {
+            "plugin" : true
         }
     },
     "sapux": [
