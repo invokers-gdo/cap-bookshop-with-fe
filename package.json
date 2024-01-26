@@ -25,7 +25,7 @@
     },
     "scripts": {
         "genres": "cds serve test/genres.cds",
-        "start": "cds run",
+        "start": "cds-serve",
         "watch": "cds watch",
         "build:mta": "cds build/all --clean && mbt build -p=cf",
         "deploy:cf": "npm run build:mta && cf deploy mta_archives/bookshop_${npm_package_version}.mtar -f",
